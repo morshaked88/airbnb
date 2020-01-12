@@ -43,10 +43,5 @@ border: none;
 height: 100%;
 background-color: transparent;
 cursor: pointer;
-transition: 0.5s all;
-
-&:hover{
-    text-underline-position:
-}
 `;
 
