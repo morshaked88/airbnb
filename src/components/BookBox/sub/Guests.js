@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useData } from '../../../state/Store';
-// import DropAdult from '../sub/DropMenu/DropAdult';
-// import DropChild from '../sub/DropMenu/DropChild';
-// import DropInf from '../sub/DropMenu/DropInf';
 import DropBottom from '../sub/DropMenu/BottomDrop';
 import DropComp from '../sub/DropMenu/DropComp';
 import DropCompA from '../sub/DropMenu/DropCompA';
