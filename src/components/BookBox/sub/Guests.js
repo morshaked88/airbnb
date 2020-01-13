@@ -130,7 +130,7 @@ const Menu = styled.div`
 position: absolute;
 width: 20%;
 background-color: #fff;
-bottom: 23px;
+bottom: 3px;
 border: 0.5px solid lightgray;
 border-bottom-left-radius: 6px;
 border-bottom-right-radius: 6px;
