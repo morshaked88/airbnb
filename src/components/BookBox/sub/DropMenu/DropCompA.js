@@ -1,35 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useData } from '../../../../state/Store';
 
-const DropAdult = () => {
-    const {
-        adultC,
-        setAdult,
-        isDisabledA,
-        setDisabledA,
-        infantsC,
-        childrenC
-    } = useData();
+const DropCompA = ({ localCounter, setLocalCounter, setLocalDisabled, childCounter, infantsCounter, isDisabled }) => {
 
-    if (adultC === 0) {
-        setDisabledA(true)
-    } else if (childrenC >= 1) {
-        setDisabledA(true)
-    } else if (infantsC >= 1) {
-        setDisabledA(true)
-    } else if (childrenC >= 1 && infantsC >= 1) {
-        setDisabledA(true)
+
+    if (localCounter === 0) {
+        setLocalDisabled(true)
+    } else if (childCounter >= 1) {
+        setLocalDisabled(true)
+    } else if (infantsCounter >= 1) {
+        setLocalDisabled(true)
+    } else if (childCounter >= 1 && infantsCounter >= 1) {
+        setLocalDisabled(true)
     } else {
-        setDisabledA(false)
+        setLocalDisabled(false)
     }
 
-    const checkUp = () => {
-        setAdult(adultC + 1);
+    const checkUp = (counter, setCounter) => {
+        setCounter(counter + 1);
     }
 
-    const checkDown = () => {
-        setAdult(adultC - 1);
+    const checkDown = (counter, setCounter) => {
+        setCounter(counter - 1);
     }
 
     return (
@@ -39,16 +31,16 @@ const DropAdult = () => {
                 <SubTitle>{<br></br>}</SubTitle>
             </TitleBox>
             <BtnBox>
-                <Btn onClick={() => checkDown()} disabled={isDisabledA}>-</Btn>
-                <Title2>{adultC}+</Title2>
-                <Btn onClick={() => checkUp()}>+</Btn>
+                <Btn onClick={() => checkDown(localCounter, setLocalCounter)} disabled={isDisabled}>-</Btn>
+                <Title2>{localCounter}+</Title2>
+                <Btn onClick={() => checkUp(localCounter, setLocalCounter)}>+</Btn>
             </BtnBox>
         </Box>
     )
 
 };
 
-export default DropAdult;
+export default DropCompA;
 
 const Box = styled.div`
 display: flex;

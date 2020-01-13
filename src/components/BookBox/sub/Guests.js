@@ -1,20 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useData } from '../../../state/Store';
-import DropAdult from '../sub/DropMenu/DropAdult';
-import DropChild from '../sub/DropMenu/DropChild';
-import DropInf from '../sub/DropMenu/DropInf';
+// import DropAdult from '../sub/DropMenu/DropAdult';
+// import DropChild from '../sub/DropMenu/DropChild';
+// import DropInf from '../sub/DropMenu/DropInf';
 import DropBottom from '../sub/DropMenu/BottomDrop';
+import DropComp from '../sub/DropMenu/DropComp';
+import DropCompA from '../sub/DropMenu/DropCompA';
 
 const Guests = () => {
     const {
         hasPoped,
         setPoped,
-        guests,
-        setGuests,
         adultC,
+        setAdult,
         childrenC,
-        infantsC
+        setChildren,
+        infantsC,
+        setInfants,
+        isDisabledA,
+        setDisabledA,
+        isDisabledC,
+        setDisabledC,
+        isDisabledI,
+        setDisabledI,
+        guests,
+        setGuests
     } = useData();
 
 
@@ -24,6 +35,8 @@ const Guests = () => {
         setGuests(`${adultC + childrenC} guests, ${infantsC} infants`);
     } else if (adultC > 1 && childrenC > 1 && infantsC === 1) {
         setGuests(`${adultC + childrenC} guests, ${infantsC} infant`);
+    } else if (adultC === 1 && childrenC > 1 && infantsC === 0) {
+        setGuests(`${adultC + childrenC} guests`);
     } else if (adultC === 1 && childrenC === 1 && infantsC === 1) {
         setGuests(`${adultC + childrenC} guests, ${infantsC} infant`);
     } else if (adultC === 1 && childrenC === 1 && infantsC > 1) {
@@ -53,9 +66,31 @@ const Guests = () => {
             <Label>Guests</Label>
             <Select onClick={() => setPoped(!hasPoped)}>{guests}</Select>
             {hasPoped ? <Menu>
-                <DropAdult />
-                <DropChild />
-                <DropInf />
+                <DropCompA
+                    localCounter={adultC}
+                    setLocalCounter={setAdult}
+                    setLocalDisabled={setDisabledA}
+                    childCounter={childrenC}
+                    infantsCounter={infantsC}
+                    isDisabled={isDisabledA} />
+                <DropComp
+                    localCounter={childrenC}
+                    setLocalDisabled={setDisabledC}
+                    setLocalC={setChildren}
+                    globalCounter={adultC}
+                    setGlobalC={setAdult}
+                    localDisabled={isDisabledC}
+                    title='Children'
+                    subTitle='Ages 2-12' />
+                <DropComp
+                    localCounter={infantsC}
+                    setLocalDisabled={setDisabledI}
+                    setLocalC={setInfants}
+                    globalCounter={adultC}
+                    setGlobalC={setAdult}
+                    localDisabled={isDisabledI}
+                    title='Infants'
+                    subTitle='Under 2' />
                 <DropBottom />
             </Menu> : null}
         </Box>
