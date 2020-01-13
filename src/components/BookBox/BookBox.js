@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Where from '../BookBox/sub/Where';
 import CheckIn from '../BookBox/sub/CheckIn';
 import Guests from '../BookBox/sub/Guests';
+import SearchBtn from '../BookBox/SearchBtn';
 
 
 const BookBox = () => {
@@ -14,6 +15,7 @@ const BookBox = () => {
             <Where />
             <CheckIn />
             <Guests />
+            <SearchBtn />
         </Box>
     )
 };
@@ -21,7 +23,7 @@ const BookBox = () => {
 export default BookBox;
 
 const Box = styled.div`
-height: 50%;
+height: 53%;
 width: 22%;
 background-color: #fff;
 display: flex;

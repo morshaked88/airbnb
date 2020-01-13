@@ -34,14 +34,21 @@ display: flex;
 width: 100%;
 justify-content: space-between;
 box-sizing: border-box;
-padding: 20px 10px;
-height: 10px;
+height: 50px;
+align-items: center;
+padding: 10px 10px;
 `;
 
-const Btn = styled.button`
+const Btn = styled.a`
 border: none;
 height: 100%;
 background-color: transparent;
 cursor: pointer;
+color: dodgerblue;
+transition: 0.5s all;
+
+&:hover {
+    text-decoration: underline;
+}
 `;
 
